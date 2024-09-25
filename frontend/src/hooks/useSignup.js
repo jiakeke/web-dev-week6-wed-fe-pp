@@ -1,14 +1,18 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useField from './useField';
 
 const useSignup = function (setIsAuthenticated) {
   const emailInput = useField("text");
   const passwordInput = useField("password");
+  const password2Input = useField("password");
   const navigate = useNavigate();
 
-
   const handleSignup = async () => {
+    if (passwordInput.value !== password2Input.value) {
+      console.error("Passwords do not match!");
+      return; // Exit if passwords don't match
+    }
+    
     try {
       const response = await fetch("/api/users/signup", {
         method: "POST",
@@ -36,6 +40,7 @@ const useSignup = function (setIsAuthenticated) {
   return {
     emailInput,
     passwordInput,
+    password2Input,
     handleSignup,
   };
 };

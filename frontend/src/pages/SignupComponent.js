@@ -1,7 +1,7 @@
 import useSignup from "../hooks/useSignup";
 
 const SignupComponent = ({ setIsAuthenticated }) => {
-  const { emailInput, passwordInput, handleSignup } =
+  const { emailInput, passwordInput, password2Input, handleSignup } =
     useSignup(setIsAuthenticated);
 
   return (
@@ -15,6 +15,11 @@ const SignupComponent = ({ setIsAuthenticated }) => {
       <label>
         Password:
         <input {...passwordInput}/>
+      </label>
+      <br />
+      <label>
+        Password2:
+        <input {...password2Input}/>
       </label>
       <br />
       <button onClick={handleSignup}>Sign Up</button>
