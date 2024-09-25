@@ -1,7 +1,7 @@
 import useLogin from "../hooks/useLogin";
 
 const LoginComponent = ({ setIsAuthenticated }) => {
-  const { email, setEmail, password, setPassword, handleLogin } =
+  const { emailInput, passwordInput, handleLogin} =
     useLogin(setIsAuthenticated);
 
   return (
@@ -9,20 +9,12 @@ const LoginComponent = ({ setIsAuthenticated }) => {
       <h2>Login</h2>
       <label>
         Username:
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <input {...emailInput} />
       </label>
       <br />
       <label>
         Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <input {...passwordInput}/>
       </label>
       <br />
       <button onClick={handleLogin}>Log In</button>
